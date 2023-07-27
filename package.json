@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/wJollie/ReadmeGenerator/issues"
   },
-  "homepage": "https://github.com/wJollie/ReadmeGenerator#readme"
+  "homepage": "https://github.com/wJollie/ReadmeGenerator#readme",
+  "dependencies": {
+    "inquirer": "^9.2.8"
+  }
 }

@@ -1,7 +1,7 @@
 # Generating a ReadMe
 
 ## Description
-This project is for the Upenn fullstack Dev Bootcamp, This is a generator that creates a readme file with user inupts
+This project is for the Upenn fullstack Dev Bootcamp, This is a generator that creates a readme file with user inupts. This base code was provided by Upenn and Syntax Help was provided by Google and Chatgpt. 
 
 ## Table of Contents
 - [Installation](#installation)

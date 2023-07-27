@@ -1,6 +1,8 @@
-const inquirer = require("inquirer");
+// index.js
 const fs = require("fs");
+const generateMarkdown = require("./utils/generateMarkdown"); // Assuming the generateMarkdown.js is in the same directory
 
+// TODO: Create an array of questions for user input
 const questions = [
   {
     type: "input",
@@ -17,38 +19,9 @@ const questions = [
     name: "installation",
     message: "Enter installation instructions:",
   },
-  {
-    type: "input",
-    name: "usage",
-    message: "Enter usage information:",
-  },
-  {
-    type: "input",
-    name: "contributing",
-    message: "Enter contribution guidelines:",
-  },
-  {
-    type: "input",
-    name: "tests",
-    message: "Enter test instructions:",
-  },
-  {
-    type: "list",
-    name: "license",
-    message: "Choose a license for your application:",
-    choices: ["MIT", "Apache", "GPL", "None"],
-  },
-  {
-    type: "input",
-    name: "github",
-    message: "Enter your GitHub username:",
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "Enter your email address:",
-  },
 ];
+
+// TODO: Create a function to write README file
 function writeToFile(fileName, data) {
   const content = generateMarkdown(data);
 
@@ -57,7 +30,11 @@ function writeToFile(fileName, data) {
     console.log("README.md generated successfully!");
   });
 }
-function init() {
+
+// TODO: Create a function to initialize app
+async function init() {
+  const inquirer = (await import("inquirer")).default; // Use dynamic import to get inquirer
+
   inquirer
     .prompt(questions)
     .then((answers) => {
@@ -70,40 +47,3 @@ function init() {
 
 // Function call to initialize app
 init();
-function generateMarkdown(data) {
-  return `# ${data.title}
-  
-  ## Description
-  ${data.description}
-  
-  ## Table of Contents
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
-  - [Contributing](#contributing)
-  - [Tests](#tests)
-  - [Questions](#questions)
-  
-  ## Installation
-  ${data.installation}
-  
-  ## Usage
-  ${data.usage}
-  
-  ${renderLicenseSection(data.license)}
-  
-  ## Contributing
-  ${data.contributing}
-  
-  ## Tests
-  ${data.tests}
-  
-  ## Questions
-  GitHub: [${data.github}](https://github.com/${data.github})
-  Email: ${data.email}
-  `;
-}
-
-// TODO: Implement the renderLicenseBadge, renderLicenseLink, and renderLicenseSection functions here
-
-module.exports = generateMarkdown;
